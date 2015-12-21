@@ -15,13 +15,13 @@ tasks.withType(JavaCompile) {
 
 eclipse {
 	project {
-		referencedProjects 'wicket-my-components'
+		referencedProjects 'awesome-wicket-components'
 	}
 	wtp {
 		component {
-			deployName = 'wicket-my-components'
+			deployName = 'awesome-wicket-components-demo'
 			resource sourcePath: 'WebContent', deployPath: '/', tag: 'defaultRootSource'
-			property name: 'java-output-path', value: '/wicket-my-components/build/classes'
+			property name: 'java-output-path', value: '/awesome-wicket-components-demo/build/classes'
 		}
 		facet {
 			facet type: 'fixed', name: 'jst.web'
@@ -81,7 +81,7 @@ dependencies {
 	// JSON
 	compile 'com.google.code.gson:gson:2.3'
 	
-	// wicket-my-components
-	compile project(':wicket-my-components')
+	// awesome-wicket-components
+	compile project(':awesome-wicket-components')
 
 }

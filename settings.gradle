@@ -1,2 +1,2 @@
-include ':wicket-my-components'
-project(':wicket-my-components').projectDir = new File(settingsDir, '../wicket-my-components')
+include ':awesome-wicket-components'
+project(':awesome-wicket-components').projectDir = new File(settingsDir, '../awesome-wicket-components')
