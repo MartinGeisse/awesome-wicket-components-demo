@@ -1,0 +1,52 @@
+<html>
+<body>
+	<div class="container">
+		<h1>Simple Forms</h1>
+		<p>
+			This page shows some examples of <code>SimpleFormPanel</code>.
+			Each example is shown "in action" on the right side (or below, if you're on a small screen).
+		</p>
+		<h2>Basic Usage</h2>
+		<p>
+			We're using an object called <code>BasicUsageData</code> to store a username, password, and
+			the password again (to check for typos). It's a simple POJO with getters and setters, nothing
+			more. Think of a registration form on some website.
+		</p>
+		<div class="row">
+	  		<div class="col-xs-12 col-lg-6">
+	  			<code style="font-family: monospace; white-space: pre;">
+SimpleFormPanel&lt;BasicUsageData&gt; formPanel =
+	new SimpleFormPanel&lt;&gt;("basicUsageForm");
+formPanel.prepareDecorator().
+	withLabel("Choose a username").
+	withModel("username").
+	withRequiredness(true).
+	addTextField();
+formPanel.prepareDecorator().
+	withLabel("Choose a password").
+	withModel("password").
+	withRequiredness(true).
+	addPasswordTextField();
+formPanel.prepareDecorator().
+	withLabel("Please type in your password again").
+	withModel("passwordAgain").
+	withRequiredness(true).
+	addPasswordTextField();
+formPanel.prepareSpecialFormBlock().
+	withText("Register").
+	addSubmitButton();
+add(formPanel);
+</code>
+	  		</div>
+	  		<div class="col-xs-12 col-sm-6">
+	  			<div wicket:id="basicUsageForm" />
+	  		</div>
+	  	</div>
+		
+		<div>
+		</div>
+		<code>
+		</code>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+<body>
+	<div class="container">
+		Hello world!
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<table id="myTable" class="table table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Username</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td>@mdo</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Jacob</td>
+					<td>Thornton</td>
+					<td>@fat</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Larry</td>
+					<td>the Bird</td>
+					<td>@twitter</td>
+				</tr>
+			</tbody>
+		</table>
+	
+		<ul id="contextMenu" class="dropdown-menu" role="menu" style="ddisplay: none">
+			<li><a ttabindex="-1" href="#">Action</a></li>
+			<li><a ttabindex="-1" href="#">Another action</a></li>
+			<li><a ttabindex="-1" href="#">Something else here</a></li>
+			<li class="divider"></li>
+			<li><a ttabindex="-1" href="#">Separated link</a></li>
+		</ul>
+	
+		<script type="text/javascript">
+			(function($) {
+				$.fn.contextMenu = function(settings) {
+					return this.each(function() {
+	
+						// Open context menu
+						$(this).on("contextmenu", function(e) {
+							var $menu = $(settings.menuSelector);
+							$menu.data("invokedOn", $(e.target));
+							$menu.show();
+							$menu.css({
+								position : "absolute",
+								left : getMenuPosition(e.clientX, 'width', 'scrollLeft'),
+								top : getMenuPosition(e.clientY, 'height', 'scrollTop')
+							});
+							return false;
+						});
+	
+						//make sure menu closes on any click
+						$(document).click(function() {
+							$(settings.menuSelector).hide();
+						});
+						
+					});
+	
+					/*
+					 * Positions the menu along one axis. Normally the menu expands starting at the mouse position
+					 * towards positive coordinates, but if it crosses the window boundary that way, it expands
+					 * towards negative coordinates instead.
+					 */
+					function getMenuPosition(mousePosition, sizePropertyName, scrollPositionPropertyName) {
+						var windowSize = $(window)[sizePropertyName]();
+						var menuSize = $(settings.menuSelector)[sizePropertyName]();
+						var scrollPosition = $(window)[scrollPositionPropertyName]();
+						var menuPosition = mousePosition + scrollPosition;
+						if (mousePosition + menuSize > windowSize && menuSize < mousePosition) {
+							menuPosition -= menuSize;
+						}
+						return menuPosition;
+					}
+	
+				};
+			})(jQuery);
+			$("#myTable td").contextMenu({menuSelector: "#contextMenu"});
+	
+		</script>
+	</div>
+</body>
+</html>
