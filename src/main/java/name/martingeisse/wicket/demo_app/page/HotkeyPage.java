@@ -6,7 +6,7 @@
 
 package name.martingeisse.wicket.demo_app.page;
 
-import name.martingeisse.wicket.hotkey.HotkeyBehavior;
+import name.martingeisse.wicket.experimental.hotkey.HotkeyBehavior;
 
 /**
  *
