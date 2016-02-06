@@ -6,6 +6,9 @@
 	metadata-complete="true">
 
 	<!-- note: metadata-complete="true" means that library JAR files won't be scanned for servlet annotations, but the application code *will* be scanned. -->
+	
+	<!-- this is needed to prevent other scanning -->
+	<absolute-ordering />
 
 	<display-name>WMC-Demo</display-name>
 	<welcome-file-list>
@@ -20,7 +23,6 @@
 	</listener>
 
 	<!-- need to map the servlet manually due to broken annotation processing (Java 8 related) in Tomcat -->
-    <absolute-ordering />
     <filter>
         <filter-name>HelloWorldApplication</filter-name>
         <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
